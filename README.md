@@ -38,7 +38,7 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :purchases
-- has_one :address
+
 
 
 ## itemsテーブル
@@ -55,8 +55,8 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :purchases
-- has_one  :address
+- has_one :purchases
+
 
 ## purchasesテーブル
 | Column | Type | Options |
@@ -66,7 +66,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-
+- has_one :address
 
 ## addressesテーブル
 | Column | Type | Options |
@@ -77,10 +77,10 @@ Things you may want to cover:
 |house_number|string|null: false|
 |building_name|string|
 |tel|string|null: false|
-|user|references|null: false, foreign_key: true|
+|purchase|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :item
-- belongs_to :user
+- belongs_to :purchase
+
 
 
 
