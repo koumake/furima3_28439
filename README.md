@@ -56,7 +56,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - has_many :purchases
-- has_one  :addresses
+- has_one  :address
 
 ## purchasesテーブル
 | Column | Type | Options |
@@ -64,8 +64,8 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 |item|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 
 ## addressesテーブル
@@ -79,8 +79,8 @@ Things you may want to cover:
 |tel|string|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 
 
