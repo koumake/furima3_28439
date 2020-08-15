@@ -15,7 +15,8 @@ class User < ApplicationRecord
     validates :firstname_alias, format: {with: /\A[ァ-ヶー－]+\z/ }
     validates :lastname_alias, format: {with: /\A[ァ-ヶー－]+\z/ }
     validates :password, confirmation: true
+    validates :nickname
+    validates :birthday
   end      
-  validates :nickname, presence: true
-  validates :birthday, presence: true
+  
 end
