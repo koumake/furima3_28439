@@ -17,4 +17,5 @@ class User < ApplicationRecord
     validates :password, confirmation: true
   end      
   validates :nickname, presence: true
+  validates :birthday, presence: true
 end
