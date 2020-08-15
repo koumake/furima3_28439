@@ -10,8 +10,6 @@ class User < ApplicationRecord
   with_options presence: true do
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: '6文字以上の半角英数字'
-    validates :email, uniqueness: true
-    validates :email, inclusion: { in: @ }
     validates :firstname, format: {with: /\A[ぁ-んァ-ン一-龥]/}
     validates :lastname, format: {with: /\A[ぁ-んァ-ン一-龥]/}
     validates :firstname_alias, format: {with: /\A[ァ-ヶー－]+\z/ }
