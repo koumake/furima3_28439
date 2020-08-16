@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
   def index
-    @item = Item.order(created_at: :DESC).includes(:user)
+    @items = Item.order(created_at: :DESC).includes(:user)
     
   end
   def new
