@@ -11,7 +11,7 @@ app/assets/stylesheets/items/new.css %>
 
 
     <% @item.errors.full_messages.each do |message| %>
-      <% render 'shared/error_messages', model: f.object %>
+      <%= render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <% end %>
     <%# 出品画像 %>

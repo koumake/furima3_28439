@@ -1,0 +1,15 @@
+FactoryBot.define do
+    factory :item do
+       
+       name {'あああ'}
+       price {'500'}
+       about {'ああああ'}
+       genre_id {3}
+       condition_id {3}
+       delivery_fee_id {3}
+       prefecture_id {3}
+       day_id {3}
+       user_id {2}
+       association :user
+    end
+end
