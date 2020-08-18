@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_035038) do
     t.integer "prefecture_id", null: false
     t.integer "day_id", null: false
     t.bigint "user_id"
+    t.integer "purchaser_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"

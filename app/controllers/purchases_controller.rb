@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
 
+    before_action :correct_user, only: [:index]
+
     def index
         @purchase = UserPurchase.new
         @item = Item.find(params[:item_id])
@@ -13,10 +15,16 @@ class PurchasesController < ApplicationController
           
           pay_item
           @purchase.save
-          return redirect_to new_item_path
+          return redirect_to action: 'done'
         else
           render :index
         end
+    end
+
+    def done
+      @item_purcahser = Item.find(params[:item_id])
+      @item_purcahser.update(purchaser_id: current_user.id)
+      redirect_to items_path
     end
 
     private
@@ -37,6 +45,11 @@ class PurchasesController < ApplicationController
           card: purchase_params[:token],
           currency: 'jpy'
         )
+    end
+
+    def correct_user
+      item = Item.find(params[:item_id])
+      redirect_to root_path if current_user.id == item.user_id or item.purchaser_id != nil
     end
     
 end

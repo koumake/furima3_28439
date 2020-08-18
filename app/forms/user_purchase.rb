@@ -10,7 +10,15 @@ class UserPurchase
                   :item_id,
                   :purchase_id,
                   :token
-                  
+    
+    with_options presence: true do
+      validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
+      validates :tel, format: {with: /\A\d{11}\z/}
+      validates :city
+      validates :house_number
+      validates :prefecture
+    end
+    end
                   
     def save
       

@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :prefecture_id,         null: false
       t.integer :day_id,         null: false
       t.references :user, foreign_key: true
+      t.integer :purchaser_id
       t.timestamps
     end
   end
