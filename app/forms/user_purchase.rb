@@ -5,12 +5,18 @@ class UserPurchase
                   :city, 
                   :house_number, 
                   :building_name, 
-                  :tel
+                  :tel,
+                  :user_id,
+                  :item_id,
+                  :purchase_id,
+                  :token
+                  
                   
     def save
-    item = Item.find(item_id)
-    Address.create(postal_code: postal_code, prefecture: prefecture, city: city, house_number: house_number, builing_name: building_name, tel: tel, user_id: current_user.id)
-    Purchase.create(user_id: current_user.id, item_id: item.id)
+      
+      purchase = Purchase.create(user_id: user_id, item_id: item_id)
+      Address.create(postal_code: postal_code, prefecture: prefecture, city: city, house_number: house_number, building_name: building_name, tel: tel, purchase_id: purchase_id)
+      
     end
                 
 end
