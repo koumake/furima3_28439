@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :purchases, only:[:index, :create] do
       collection do
-        post 'done', to: 'purchases#done'
+        get 'done', to: 'purchases#done'
       end
     end
   end
