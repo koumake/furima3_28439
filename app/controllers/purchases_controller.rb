@@ -1,15 +1,13 @@
 class PurchasesController < ApplicationController
 
     before_action :correct_user, only: [:index]
-
+    before_action :set_item, only: [:index, :create, :done, :correct_user]
     def index
         @purchase = UserPurchase.new
-        @item = Item.find(params[:item_id])
     end
       
     def create
         @purchase = UserPurchase.new(purchase_params)
-        @item = Item.find(params[:item_id])
         
         if @purchase.valid?
           
@@ -22,7 +20,6 @@ class PurchasesController < ApplicationController
     end
 
     def done
-      @item_purcahser = Item.find(params[:item_id])
       @item_purcahser.update(purchaser_id: current_user.id)
       redirect_to items_path
     end
@@ -30,10 +27,7 @@ class PurchasesController < ApplicationController
     private
     
     def purchase_params
-       
-      # params.require(:user_purchase).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :tel)
-   
-       params.permit(:postal_code, :prefecture, :city, :house_number, :building_name, :tel, :token, :item_id).merge(user_id: current_user.id)
+      params.permit(:postal_code, :prefecture, :city, :house_number, :building_name, :tel, :token, :item_id).merge(user_id: current_user.id)
     end
 
    
@@ -48,8 +42,11 @@ class PurchasesController < ApplicationController
     end
 
     def correct_user
-      item = Item.find(params[:item_id])
       redirect_to root_path if current_user.id == item.user_id or item.purchaser_id != nil
+    end
+
+    def set_item
+      item = Item.find(params[:item_id])
     end
     
 end

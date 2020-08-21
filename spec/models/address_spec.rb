@@ -39,5 +39,15 @@ RSpec.describe Address, type: :model do
       @address.valid?
       expect(@address.errors.full_messages).to include("Tel can't be blank", "Tel is invalid")
     end
+    it "電話番号にハイフンがあると登録できない" do
+      @address.tel = 000-0000-0000
+      @address.valid?
+      expect(@address.errors.full_messages).to include("Tel is invalid")
+    end
+    it "電話番号が１２桁以上だと登録できない" do
+      @address.tel = 000000000000
+      @address.valid?
+      expect(@address.errors.full_messages).to include("Tel is invalid")
+    end
   end
 end

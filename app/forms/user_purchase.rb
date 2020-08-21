@@ -13,6 +13,7 @@ class UserPurchase
     with_options presence: true do 
       validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
       validates :tel, format: {with: /\A\d{11}\z/}
+      validates :tel, length: {maximum: 11}
       validates :city
       validates :house_number
       validates :prefecture
