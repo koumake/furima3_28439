@@ -3,7 +3,8 @@ class PurchasesController < ApplicationController
     before_action :correct_user, only: [:index]
     before_action :set_item, only: [:index, :create, :done, :correct_user]
     def index
-        @purchase = UserPurchase.new
+       
+       @purchase = UserPurchase.new
     end
       
     def create
@@ -20,7 +21,8 @@ class PurchasesController < ApplicationController
     end
 
     def done
-      @item_purcahser.update(purchaser_id: current_user.id)
+      @item_purchaser = Item.find(params[:item_id])
+      @item_purchaser.update(purchaser_id: current_user.id)
       redirect_to items_path
     end
 
@@ -42,11 +44,12 @@ class PurchasesController < ApplicationController
     end
 
     def correct_user
+      @item = Item.find(params[:item_id])
       redirect_to root_path if current_user.id == item.user_id or item.purchaser_id != nil
     end
 
     def set_item
-      item = Item.find(params[:item_id])
+      @item = Item.find(params[:item_id])
     end
     
 end
