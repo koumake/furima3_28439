@@ -13,7 +13,6 @@ app/assets/stylesheets/items/new.css %>
     
       <%= render 'shared/error_messages', model: f.object %>
     
-    <% end %>
    
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -59,6 +58,7 @@ app/assets/stylesheets/items/new.css %>
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:condition_id, Condition.all, :id, :name, {class:"select-box"}) %>
+      </div>
       </div>
     </div>
     <%# /商品の詳細 %>
