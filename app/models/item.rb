@@ -15,7 +15,6 @@ class Item < ApplicationRecord
     validates :genre_id, numericality: { other_than: 1 }
     validates :condition_id, numericality: { other_than: 1 }
     validates :delivery_fee_id, numericality: { other_than: 1 }
-    validates :prefecture_id, numericality: { other_than: 1 }
     validates :day_id, numericality: { other_than: 1 }
 
     with_options presence: true do
