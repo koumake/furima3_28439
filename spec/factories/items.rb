@@ -11,5 +11,10 @@ FactoryBot.define do
        day_id {3}
        user_id {2}
        association :user
+       title {Faker::Name.title}
+      date_time {Faker::Date.between}
+      plece {Faker::Address.city}
+      number {Faker::Number.within(range: 1..10)}
+      target_person {Faker::Lorem.sentence}
     end
 end
